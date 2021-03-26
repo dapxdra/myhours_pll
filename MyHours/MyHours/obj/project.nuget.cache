@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "2Q7uC23wkam7qrrzpfNYKPvXlx9oLu4dm9wFhguNB4uNFzVcHzVKzblzmIvDyLM7cxK2HhzyjHrAOAUc/a6p6A==",
+  "dgSpecHash": "U6dMz6ZdQFd/6XX1AZqIY3q/BfrtCNR8hJBhQgsA1cvRRf+ewKohmDBKsZx6W+SCBN/ONLDPFDCM1duJMAFeUA==",
   "success": true,
   "projectFilePath": "F:\\Documents\\UTN\\1C.2021\\WEBll\\Proyecto2\\myhours_pll\\MyHours\\MyHours\\MyHours.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Daniel\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Daniel\\.nuget\\packages\\efcore.namingconventions\\5.0.2\\efcore.namingconventions.5.0.2.nupkg.sha512",
     "C:\\Users\\Daniel\\.nuget\\packages\\graphql\\2.4.0\\graphql.2.4.0.nupkg.sha512",
     "C:\\Users\\Daniel\\.nuget\\packages\\graphql-parser\\3.0.0\\graphql-parser.3.0.0.nupkg.sha512",
@@ -97,7 +98,7 @@
     "C:\\Users\\Daniel\\.nuget\\packages\\system.reactive.linq\\3.1.1\\system.reactive.linq.3.1.1.nupkg.sha512",
     "C:\\Users\\Daniel\\.nuget\\packages\\system.reactive.platformservices\\3.1.1\\system.reactive.platformservices.3.1.1.nupkg.sha512",
     "C:\\Users\\Daniel\\.nuget\\packages\\system.reflection\\4.1.0\\system.reflection.4.1.0.nupkg.sha512",
-    "C:\\Users\\Daniel\\.nuget\\packages\\system.reflection.emit\\4.0.1\\system.reflection.emit.4.0.1.nupkg.sha512",
+    "C:\\Users\\Daniel\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\Daniel\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.0.1\\system.reflection.emit.ilgeneration.4.0.1.nupkg.sha512",
     "C:\\Users\\Daniel\\.nuget\\packages\\system.reflection.emit.lightweight\\4.0.1\\system.reflection.emit.lightweight.4.0.1.nupkg.sha512",
     "C:\\Users\\Daniel\\.nuget\\packages\\system.reflection.extensions\\4.0.1\\system.reflection.extensions.4.0.1.nupkg.sha512",
