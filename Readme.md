@@ -16,3 +16,6 @@
 9. dotnet add package GraphQL.Server.Transports.AspNetCore --version 3.4.0
 10. dotnet add package GraphQL.Server.Transports.WebSockets --version 3.4.0
 11. dotnet add package GraphQL.Server.Ui.Playground
+12. dotnet add package AutoMapper
+13. dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection
+14. dotnet add package Microsoft.EntityFrameworkCore.SqlServer

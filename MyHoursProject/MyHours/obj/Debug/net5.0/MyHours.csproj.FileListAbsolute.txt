@@ -45,3 +45,13 @@ F:\Documents\UTN\1C.2021\WEBll\Proyecto2\myhours_pll\MyHours\MyHours\obj\Debug\n
 F:\Documents\UTN\1C.2021\WEBll\Proyecto2\myhours_pll\MyHours\MyHours\obj\Debug\net5.0\ref\MyHours.dll
 F:\Documents\UTN\1C.2021\WEBll\Proyecto2\myhours_pll\MyHours\MyHours\obj\Debug\net5.0\MyHours.pdb
 F:\Documents\UTN\1C.2021\WEBll\Proyecto2\myhours_pll\MyHours\MyHours\obj\Debug\net5.0\MyHours.genruntimeconfig.cache
+F:\Documents\UTN\1C.2021\WEBll\Proyecto2\myhours_pll\MyHoursProject\MyHours\obj\Debug\net5.0\MyHours.csprojAssemblyReference.cache
+F:\Documents\UTN\1C.2021\WEBll\Proyecto2\myhours_pll\MyHoursProject\MyHours\obj\Debug\net5.0\MyHours.GeneratedMSBuildEditorConfig.editorconfig
+F:\Documents\UTN\1C.2021\WEBll\Proyecto2\myhours_pll\MyHoursProject\MyHours\obj\Debug\net5.0\MyHours.AssemblyInfoInputs.cache
+F:\Documents\UTN\1C.2021\WEBll\Proyecto2\myhours_pll\MyHoursProject\MyHours\obj\Debug\net5.0\MyHours.AssemblyInfo.cs
+F:\Documents\UTN\1C.2021\WEBll\Proyecto2\myhours_pll\MyHoursProject\MyHours\obj\Debug\net5.0\MyHours.csproj.CoreCompileInputs.cache
+F:\Documents\UTN\1C.2021\WEBll\Proyecto2\myhours_pll\MyHoursProject\MyHours\obj\Debug\net5.0\MyHours.MvcApplicationPartsAssemblyInfo.cs
+F:\Documents\UTN\1C.2021\WEBll\Proyecto2\myhours_pll\MyHoursProject\MyHours\obj\Debug\net5.0\MyHours.MvcApplicationPartsAssemblyInfo.cache
+F:\Documents\UTN\1C.2021\WEBll\Proyecto2\myhours_pll\MyHoursProject\MyHours\obj\Debug\net5.0\MyHours.dll
+F:\Documents\UTN\1C.2021\WEBll\Proyecto2\myhours_pll\MyHoursProject\MyHours\obj\Debug\net5.0\ref\MyHours.dll
+F:\Documents\UTN\1C.2021\WEBll\Proyecto2\myhours_pll\MyHoursProject\MyHours\obj\Debug\net5.0\MyHours.pdb

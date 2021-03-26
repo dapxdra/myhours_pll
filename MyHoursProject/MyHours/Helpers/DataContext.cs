@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using MyHours.Entities;
 
-namespace WebApi.Helpers
+namespace MyHours.Helpers
 {
     public class DataContext : DbContext
     {
@@ -16,7 +16,7 @@ namespace WebApi.Helpers
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             // connect to sql server database
-            options.UseNpgsql(Configuration.GetConnectionString("WebApiDatabase"));
+            options.UseSqlite(Configuration.GetConnectionString("WebApiDatabase"));
         }
 
         public DbSet<User> Users { get; set; }
