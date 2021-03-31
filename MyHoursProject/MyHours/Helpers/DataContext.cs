@@ -8,16 +8,16 @@ namespace MyHours.Helpers
     {
         protected readonly IConfiguration Configuration;
 
-        public DataContext(IConfiguration configuration)
+        public DataContext(DbContextOptions<DataContext> options)
         {
-            Configuration = configuration;
+            
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {
+        //-protected override void OnConfiguring(DbContextOptionsBuilder options)
+        //{
             // connect to sql server database
-            options.UseSqlite(Configuration.GetConnectionString("WebApiDatabase"));
-        }
+         //   options.UseSqlite(Configuration.GetConnectionString("WebApiDatabase"));
+       // }
 
         public DbSet<User> Users { get; set; }
     }
