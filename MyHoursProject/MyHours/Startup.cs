@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System;
 using MyHours.Services;
 using MyHours.Helpers;
+using MyHours.Models;
 
 namespace MyHours
 {
@@ -19,6 +20,7 @@ namespace MyHours
         private readonly IWebHostEnvironment _env;
         private readonly IConfiguration _configuration;
 
+        
         public Startup(IWebHostEnvironment env, IConfiguration configuration)
         {
             _env = env;
@@ -28,11 +30,11 @@ namespace MyHours
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connStr = _configuration.GetConnectionString("DefaultConnection");
+        
+            //var connectionString = _configuration.GetConnectionString("DefaultConnection");
 
             services.AddDbContext<DataContext>(
-                options => options.UseNpgsql(connStr).UseSnakeCaseNamingConvention()
-            );
+                options => options.UseNpgsql(_configuration.GetConnectionString("DefaultConnection")));
             
             services.AddCors();
             services.AddControllers();

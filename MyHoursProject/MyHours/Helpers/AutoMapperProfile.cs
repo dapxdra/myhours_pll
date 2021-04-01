@@ -1,6 +1,6 @@
 using AutoMapper;
 using MyHours.Entities;
-using MyHours.Models.Users;
+using MyHours.Models;
 
 namespace MyHours.Helpers
 {

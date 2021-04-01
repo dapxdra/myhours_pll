@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace MyHours.Models.Users
+namespace MyHours.Models
 {
     public class AuthenticateModel
     {

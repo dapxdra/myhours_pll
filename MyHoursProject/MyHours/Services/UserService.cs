@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MyHours.Entities;
 using MyHours.Helpers;
+using MyHours.Models;
 
 namespace MyHours.Services
 {

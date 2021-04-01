@@ -10,7 +10,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using MyHours.Services;
 using MyHours.Entities;
-using MyHours.Models.Users;
+using MyHours.Models;
 using AutoMapper;
 
 namespace MyHours.Controllers
