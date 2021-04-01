@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using MyHours.Entities;
+using MyHours.Models;
 
 namespace MyHours.Helpers
 {

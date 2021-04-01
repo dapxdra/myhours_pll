@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using MyHours.Entities;
+
 namespace MyHours.Models
 {
   public class UserModel
@@ -6,5 +9,6 @@ namespace MyHours.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Username { get; set; }
+
     }
 }
