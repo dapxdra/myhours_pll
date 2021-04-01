@@ -11,6 +11,5 @@ namespace MyHours.Entities
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
 
-        public List<Project> Projects { get; set; }
     }
 }

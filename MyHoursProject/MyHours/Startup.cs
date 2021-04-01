@@ -34,7 +34,7 @@ namespace MyHours
             //var connectionString = _configuration.GetConnectionString("DefaultConnection");
 
             services.AddDbContext<DataContext>(
-                options => options.UseNpgsql(_configuration.GetConnectionString("DefaultConnection")).UseSnakeCaseNamingConvention());
+                options => options.UseNpgsql(_configuration.GetConnectionString("DefaultConnection")));
             
             services.AddCors();
             services.AddControllers();
