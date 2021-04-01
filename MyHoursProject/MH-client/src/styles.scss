@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+<<<<<<< HEAD
 a { cursor: pointer; }
 
 .app-container {
@@ -11,3 +12,9 @@ a { cursor: pointer; }
     text-align: center;
     box-sizing: content-box;
 }
+=======
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+>>>>>>> 4daa7ca706487ce1f825a3ed944450b8730ce970
