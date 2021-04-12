@@ -11,6 +11,18 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using MyHoursApi.Models;
+using Microsoft.EntityFrameworkCore;
+using MyHoursApi.Repositories;
+
+using GraphQL;
+using GraphQL.Server.Ui.Playground;
+using MyHoursApi.GraphQL;
+using GraphQL.Server;
+using GraphQL.Server.Transports.WebSockets;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
+
+
 
 namespace MyHoursApi
 {
@@ -26,7 +38,31 @@ namespace MyHoursApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<DatabaseContext>(
+                options => options.UseNpgsql(connectionString).UseSnakeCaseNamingConvention()
+            );
 
+            //graphql dependecy inyection
+            services.AddScoped<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
+            services.AddScoped<MyHourSchema>();
+            services.AddScoped<UserRepository>();
+            services.AddScoped<ProjectRepository>();
+            services.AddScoped<RelationRepository>();
+
+            services.AddGraphQL(options => {options.ExposeExceptions = true; })
+            .AddGraphTypes(ServiceLifetime.Scoped);
+
+
+            services.Configure<KestrelServerOptions>(options => {options.AllowSynchronousIO = true;});
+
+
+            services.AddCors(options => options.AddPolicy("CorsPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+            }));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -44,9 +80,17 @@ namespace MyHoursApi
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MyHoursApi v1"));
             }
 
+            app.UseCors("CorsPolicy");
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseGraphQL<MyHourSchema>();
+
+            // app.UseGraphQLPlayground(new GraphQLPlaygroundOptions{
+            //      Path = "/ui/playground"
+            //  });
 
             app.UseAuthorization();
 
