@@ -1,1 +1,54 @@
-<p>user-graphql works!</p>
+<h2>User Crud</h2>
+
+<div *ngIf="isFormVisible">
+    <label for="name">Name:</label>
+    <input type="text" name="name" [(ngModel)]="currentUser.name" required>
+    <br>
+    <label for="lastname">Government Id:</label>
+    <input type="text" name="lastname" [(ngModel)]="currentUser.lastname" required>
+    <br>
+    <label for="email">Email:</label>
+    <input type="email" name="email" [(ngModel)]="currentUser.email" required>
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" name="password" [(ngModel)]="currentUser.password" required>
+    <br>
+    <label for="projectId">ProjectId:</label>
+    <input type="projectId" name="projectId" [(ngModel)]="currentUser.projectId" required>
+    <br>
+    <button (click)="save()">Save</button>
+</div>
+
+<button (click)="isFormVisible = true">New User</button>
+
+<div>
+    <label for="email">Email:</label>
+    <input type="email" name="email" [(ngModel)]="email">
+    <label for="name">Name:</label>
+    <input type="text" name="name" [(ngModel)]="name">
+    <button (click)="filter()">Filter</button>
+    <button (click)="save()">Save</button>
+</div>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>ProjectId</th>
+        <th>Actions</th>
+    </tr>
+    <tr *ngFor="let user of users['users']">
+        <td>{{user.id}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.lastname}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.password}}</td>
+        <td>{{user.projectId}}</td>
+        <td>
+            <button (click)="delete(company.id)">Delete</button>
+        </td>
+    </tr>
+</table>

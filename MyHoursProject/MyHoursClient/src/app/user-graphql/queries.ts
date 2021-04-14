@@ -7,6 +7,7 @@ query($email: String, $name: String) {
         email
         name
         lastame
+        projectId
         projects {
             id
             projectname
