@@ -5,36 +5,29 @@ using MyHoursApi.GraphQL.Types;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using MyHoursApi.Repositories;
 
 namespace MyHoursApi.GraphQL
 {
     
     class MyHourQuery : ObjectGraphType
     {
-        private readonly DatabaseContext _context;
 
-        public MyHourQuery(DatabaseContext context)
+        public MyHourQuery(UserRepository userRepository, ProjectRepository projectRepository)
         {
-            _context = context;
             Field<ListGraphType<UserType>>("users",
-             arguments: new QueryArguments{new QueryArgument<StringGraphType>{Name = "Email"}},
-             resolve: context => {
-                 var results = from users in _context.Users select users;
-                 if (context.HasArgument("Email"))
-                 {
-                     var email = context.GetArgument<StringGraphType>("email");
-                     results = results.Where(c => c.Email.Equals(email));
-                 }
-                 return results;
-            });
+             arguments: new QueryArguments(
+                    new QueryArgument<StringGraphType> { Name = "email" },
+                    new QueryArgument<StringGraphType> { Name = "name" }
+                ),
+                resolve: context => userRepository.Filter(context));
+
             Field<UserType>("user",
-             arguments: new QueryArguments{new QueryArgument<IdGraphType>{Name = "id"}},
-             resolve: context => {
-                return _context.Users.Find(context.GetArgument<long>("id"));
-            });
-            Field<ListGraphType<ProjectType>>("projects", resolve: context => {
-                return _context.Projects.ToListAsync();
-            });
+             arguments: new QueryArguments(new QueryArgument<IdGraphType> { Name = "id" }),
+                resolve: context => userRepository.Find(context.GetArgument<long>("id"))
+            );
+            Field<ListGraphType<ProjectType>>("projects", resolve: context => projectRepository.All());
+            
         }
     }
 }

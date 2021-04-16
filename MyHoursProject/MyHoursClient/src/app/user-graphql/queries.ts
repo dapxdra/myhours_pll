@@ -2,15 +2,15 @@ import gql from 'graphql-tag';
 
 export const USER_QUERY = gql`
 query($email: String, $name: String) {
-    companies(email: $email, name: $name) {
+    users(email: $email, name: $name) {
         id
-        email
         name
-        lastame
+        lastname
+        email
         projectId
         projects {
             id
-            projectname
+            projectName
         }
     }
 }

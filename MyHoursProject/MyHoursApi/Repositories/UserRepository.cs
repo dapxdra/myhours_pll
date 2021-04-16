@@ -33,7 +33,7 @@ namespace MyHoursApi.Repositories
             }
              if (graphqlContext.HasArgument("name")) {
                  var name = graphqlContext.GetArgument<string>("name");
-                 results = results.Where(c => c.Name.Contains(name));
+                 results = results.Where(c => c.Name.Equals(name));
              }
             return results;
         }

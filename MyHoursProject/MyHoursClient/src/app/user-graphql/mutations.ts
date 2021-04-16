@@ -4,9 +4,9 @@ export const CREATE_USER = gql`
 mutation($user: UserInput!){
     createUser(input: $user){
         id
-        email
         name
         lastname
+        email
         projects {
             id
             projectname
