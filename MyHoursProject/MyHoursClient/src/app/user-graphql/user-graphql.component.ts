@@ -14,8 +14,9 @@ export class UserGraphqlComponent implements OnInit {
   public users: any;
   public currentUser: any;
   public isFormVisible = false;
-  public email = null;
   public name = null;
+  public lastname = null;
+  public email = null;
   public password = null;
   public isActive = true;
   constructor(private apollo: Apollo) { 
@@ -68,8 +69,8 @@ export class UserGraphqlComponent implements OnInit {
   save() {
     let user = {
       name: this.currentUser.name,
-      email: this.currentUser.email,
       lastname: this.currentUser.lastname,
+      email: this.currentUser.email,
       password: this.currentUser.password,
       isActive: this.currentUser.isActive = true
     };

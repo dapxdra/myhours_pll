@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { UserGraphqlComponent } from './user-graphql/user-graphql.component';
-import { GraphQLModule } from './graphql.module';
 
 import {APOLLO_OPTIONS} from 'apollo-angular';
 import {HttpLink} from 'apollo-angular/http';
@@ -23,8 +22,7 @@ import {InMemoryCache} from '@apollo/client/core';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule,
-    GraphQLModule
+    AppRoutingModule
   ],
   providers: [
     HttpClient,
