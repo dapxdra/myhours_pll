@@ -16,6 +16,8 @@ export class UserGraphqlComponent implements OnInit {
   public isFormVisible = false;
   public email = null;
   public name = null;
+  public password = null;
+  public isActive = true;
   constructor(private apollo: Apollo) { 
     this.users = [];
   }
@@ -27,14 +29,16 @@ export class UserGraphqlComponent implements OnInit {
     this.currentUser = {
       name: '',
       email: '',
-      lastname: ''
+      lastname: '',
+      password: '',
+      isActive: false
     };
     this.isFormVisible = false;
   }
 
-  user(user: any){
-    return user.projects.map((b:any) => b.projectname).join(', ');
-  }
+  // user(user: any){
+  //   return user.projects.map((b:any) => b.projectname).join(', ');
+  // }
 
   filter() {
     this.apollo.watchQuery({
@@ -65,7 +69,9 @@ export class UserGraphqlComponent implements OnInit {
     let user = {
       name: this.currentUser.name,
       email: this.currentUser.email,
-      lastname: this.currentUser.lastname
+      lastname: this.currentUser.lastname,
+      password: this.currentUser.password,
+      isActive: this.currentUser.isActive = true
     };
     this.apollo.mutate({
       mutation: CREATE_USER,

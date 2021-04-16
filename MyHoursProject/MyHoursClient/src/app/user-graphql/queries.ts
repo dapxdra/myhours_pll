@@ -7,11 +7,8 @@ query($email: String, $name: String) {
         name
         lastname
         email
-        projectId
-        projects {
-            id
-            projectName
-        }
+        password
+        isActive
     }
 }
 `;

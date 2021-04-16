@@ -80,19 +80,15 @@ namespace MyHoursApi.GraphQL
 
         public void createUser(){
             Field<UserType>("createUser",
-                arguments: new QueryArguments(new QueryArgument<IdGraphType> { Name = "id" },
-                                              new QueryArgument<NonNullGraphType<UserInputType>> { Name = "input" }),
-                resolve: context => userRepository.Update(context.GetArgument<long>("id"), 
-                                                             context.GetArgument<User>("input"))
+                arguments: new QueryArguments(new QueryArgument<NonNullGraphType<UserInputType>> { Name = "input" }),
+                resolve: context => userRepository.Create(context.GetArgument<User>("input"))
             );
         }
         public void deleteUser(){
             Field<UserType>("deleteUser",
-                arguments: new QueryArguments(new QueryArgument<IdGraphType> { Name = "id" },
-                                              new QueryArgument<NonNullGraphType<UserInputType>> { Name = "input" }),
-                resolve: context => userRepository.Update(context.GetArgument<long>("id"), 
-                                                             context.GetArgument<User>("input"))
-            );
+                arguments: new QueryArguments(new QueryArgument<IdGraphType> { Name = "id" }),
+                resolve: context => userRepository.Delete(context.GetArgument<long>("id"))
+                );
         }
         public void updateUser(){
             Field<UserType>("updateUser",

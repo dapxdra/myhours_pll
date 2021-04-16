@@ -7,10 +7,8 @@ mutation($user: UserInput!){
         name
         lastname
         email
-        projects {
-            id
-            projectname
-        }
+        password
+        isActive
     }
   }
 `;

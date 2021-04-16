@@ -13,16 +13,8 @@ namespace MyHoursApi.Repositories
         {
             _context = context;
         }
-
-        public IEnumerable<Project> Projects(long id) {
-            var results = from projects in _context.Projects select projects;
-            results = results.Where(b => b.Id == id);
-            return results;
-        }
-        public IEnumerable<User> Users(long projectId) {
-            var results = from users in _context.Users select users;
-            results = results.Where(b => b.ProjectId == projectId);
-            return results;
+        public IEnumerable<User> All(){
+            return _context.Users.ToList();
         }
 
         public IEnumerable<User> Filter(ResolveFieldContext<object> graphqlContext){

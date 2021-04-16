@@ -14,20 +14,14 @@ namespace MyHoursApi.Repositories
             _context = context;
         }
 
-        public IEnumerable<User> Users(long projectId) {
-            var results = from users in _context.Users select users;
-            results = results.Where(b => b.ProjectId == projectId);
-            return results;
-        }
-
         public IEnumerable<Project> All(){
             return _context.Projects.ToList();
         }
 
         public IEnumerable<Project> Filter(ResolveFieldContext<object> graphqlContext){
             var results = from projects in _context.Projects select projects;
-            if (graphqlContext.HasArgument("name")) {
-                var name = graphqlContext.GetArgument<string>("name");
+            if (graphqlContext.HasArgument("projectName")) {
+                var name = graphqlContext.GetArgument<string>("projectName");
                 results = results.Where(c => c.ProjectName.Equals(name));
             }
             // if (graphqlContext.HasArgument("name")) {

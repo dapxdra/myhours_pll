@@ -4,7 +4,7 @@
     <label for="name">Name:</label>
     <input type="text" name="name" [(ngModel)]="currentUser.name" required>
     <br>
-    <label for="lastname">Government Id:</label>
+    <label for="lastname">Lastname:</label>
     <input type="text" name="lastname" [(ngModel)]="currentUser.lastname" required>
     <br>
     <label for="email">Email:</label>
@@ -12,9 +12,6 @@
     <br>
     <label for="password">Password:</label>
     <input type="password" name="password" [(ngModel)]="currentUser.password" required>
-    <br>
-    <label for="projectId">ProjectId:</label>
-    <input type="projectId" name="projectId" [(ngModel)]="currentUser.projectId" required>
     <br>
     <button (click)="save()">Save</button>
 </div>
@@ -37,7 +34,6 @@
         <th>Lastname</th>
         <th>Email</th>
         <th>Password</th>
-        <th>ProjectId</th>
         <th>Actions</th>
     </tr>
     <tr *ngFor="let user of users['users']">
@@ -46,7 +42,6 @@
         <td>{{user.lastname}}</td>
         <td>{{user.email}}</td>
         <td>{{user.password}}</td>
-        <td>{{user.projectId}}</td>
         <td>
             <button (click)="delete(company.id)">Delete</button>
         </td>

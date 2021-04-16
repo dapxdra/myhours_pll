@@ -13,12 +13,7 @@ namespace MyHoursApi.GraphQL.Types
             Field(x => x.Id);
             Field(x => x.ProjectName);
             Field(x => x.IsActive);
-            Field<ListGraphType<UserType>>(
-                "users",
-                resolve: context => {
-                    return repository.Users(context.Source.Id);
-                }
-            );
+            
         }
     }
 }

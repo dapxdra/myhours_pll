@@ -26,7 +26,7 @@ namespace MyHoursApi.GraphQL
              arguments: new QueryArguments(new QueryArgument<IdGraphType> { Name = "id" }),
                 resolve: context => userRepository.Find(context.GetArgument<long>("id"))
             );
-            Field<ListGraphType<ProjectType>>("projects", resolve: context => projectRepository.All());
+            // Field<ListGraphType<UserType>>("users", resolve: context => userRepository.All());
             
         }
     }
