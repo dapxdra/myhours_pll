@@ -3,7 +3,6 @@ import { Apollo } from 'apollo-angular';
 import { USER_QUERY } from './queries';
 import { CREATE_USER, DELETE_USER } from './mutations';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import * as jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-user-graphql',
@@ -82,11 +81,12 @@ export class UserGraphqlComponent implements OnInit {
     });
   }
 
-  // pdf(){
-  //   const doc = new jsPDF();
+  //  pdf(){
+  //    const doc = new jsPDF();
 
-  //   doc.fromHTML(document.getElementById('jajas') , 10, 10)
+  //    doc.fromHTML(document.getElementById('jajas'))
+  //    doc.save('Lista de usuarios');
 
-  // }
+  //  }
 
 }
