@@ -13,7 +13,7 @@ namespace MyHoursApi.GraphQL.Types
             Field<NonNullGraphType<StringGraphType>>("lastname");
             Field<NonNullGraphType<StringGraphType>>("email");
             Field<NonNullGraphType<StringGraphType>>("password");
-            Field<NonNullGraphType<BooleanGraphType>>("isActive");
+            Field<BooleanGraphType>("isActive");
         }
     }
 }

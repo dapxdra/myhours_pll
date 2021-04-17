@@ -14,6 +14,7 @@
     <input type="password" name="password" [(ngModel)]="currentUser.password" required>
     <br>
     <button (click)="save()">Save</button>
+    
 </div>
 
 <button (click)="isFormVisible = true">New User</button>
@@ -27,7 +28,7 @@
     <button type="submit" class="group relatuve flez justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" (click)="save()">Save</button>
 </div>
 
-<table>
+<table id="jajas">
     <tr>
         <th>Id</th>
         <th>Name</th>
@@ -43,10 +44,12 @@
         <td>{{user.email}}</td>
         <td>{{user.password}}</td>
         <td>
-            <button (click)="delete(company.id)">Delete</button>
+            <button (click)="delete(user.id)">Delete</button>
         </td>
     </tr>
 </table>
+
+<button type="button" class="button" (click)="pdf()">Export pdf tabla</button>
 
 <!--
   This example requires Tailwind CSS v2.0+ 

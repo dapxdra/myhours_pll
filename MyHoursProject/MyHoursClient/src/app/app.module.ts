@@ -16,7 +16,7 @@ import {InMemoryCache} from '@apollo/client/core';
 @NgModule({
   declarations: [
     AppComponent,
-    UserGraphqlComponent
+    UserGraphqlComponent,
   ],
   imports: [
     BrowserModule,

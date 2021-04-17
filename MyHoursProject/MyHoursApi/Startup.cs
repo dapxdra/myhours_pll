@@ -50,12 +50,17 @@ namespace MyHoursApi
             services.AddScoped<ProjectRepository>();
             services.AddScoped<RelationRepository>();
 
-            services.AddGraphQL(options => {options.ExposeExceptions = true; })
+            services.AddGraphQL(options => { options.ExposeExceptions = true; })
             .AddGraphTypes(ServiceLifetime.Scoped);
 
 
-            services.Configure<KestrelServerOptions>(options => {options.AllowSynchronousIO = true;});
-
+            services.Configure<KestrelServerOptions>(options => { options.AllowSynchronousIO = true; });
+            services.AddAuthentication("Bearer")
+                .AddJwtBearer("Bearer", options =>
+                    {
+                        options.Authority = "https://localhost:5001";
+                        options.Audience = "graphql";
+                    });
 
             services.AddCors(options => options.AddPolicy("CorsPolicy", builder =>
             {
@@ -90,7 +95,7 @@ namespace MyHoursApi
 
             // app.UseGraphQLPlayground(new GraphQLPlaygroundOptions{
             //      Path = "/ui/playground"
-            //  });
+            // });
 
             app.UseAuthorization();
 

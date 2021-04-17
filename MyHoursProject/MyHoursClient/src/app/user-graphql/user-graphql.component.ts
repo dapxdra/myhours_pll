@@ -3,6 +3,7 @@ import { Apollo } from 'apollo-angular';
 import { USER_QUERY } from './queries';
 import { CREATE_USER, DELETE_USER } from './mutations';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import * as jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-user-graphql',
@@ -18,7 +19,6 @@ export class UserGraphqlComponent implements OnInit {
   public lastname = null;
   public email = null;
   public password = null;
-  public isActive = true;
   constructor(private apollo: Apollo) { 
     this.users = [];
   }
@@ -32,7 +32,6 @@ export class UserGraphqlComponent implements OnInit {
       email: '',
       lastname: '',
       password: '',
-      isActive: false
     };
     this.isFormVisible = false;
   }
@@ -71,8 +70,7 @@ export class UserGraphqlComponent implements OnInit {
       name: this.currentUser.name,
       lastname: this.currentUser.lastname,
       email: this.currentUser.email,
-      password: this.currentUser.password,
-      isActive: this.currentUser.isActive = true
+      password: this.currentUser.password
     };
     this.apollo.mutate({
       mutation: CREATE_USER,
@@ -83,5 +81,12 @@ export class UserGraphqlComponent implements OnInit {
       this.filter();
     });
   }
+
+  // pdf(){
+  //   const doc = new jsPDF();
+
+  //   doc.fromHTML(document.getElementById('jajas') , 10, 10)
+
+  // }
 
 }
