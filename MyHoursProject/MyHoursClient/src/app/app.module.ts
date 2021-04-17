@@ -12,11 +12,21 @@ import { UserGraphqlComponent } from './user-graphql/user-graphql.component';
 import {APOLLO_OPTIONS} from 'apollo-angular';
 import {HttpLink} from 'apollo-angular/http';
 import {InMemoryCache} from '@apollo/client/core';
+import { ProjectGraphqlComponent } from './project-graphql/project-graphql.component';
+import { RelationGraphqlComponent } from './relation-graphql/relation-graphql.component';
+import { AuthGraphqlComponent } from './auth-graphql/auth-graphql.component';
+import { LoginGraphqlComponent } from './auth-graphql/login-graphql.component';
+import { RegisterGraphqlComponent } from './auth-graphql/register-graphql.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserGraphqlComponent,
+    ProjectGraphqlComponent,
+    RelationGraphqlComponent,
+    AuthGraphqlComponent,
+    LoginGraphqlComponent,
+    RegisterGraphqlComponent,
   ],
   imports: [
     BrowserModule,

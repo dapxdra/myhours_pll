@@ -10,7 +10,7 @@ namespace MyHoursApi.GraphQL.Types
         {
             Name = "ProjectInput";
             Field<NonNullGraphType<StringGraphType>>("projectName");
-            Field<NonNullGraphType<StringGraphType>>("isActive");
+            Field<BooleanGraphType>("isActive");
         }
     }
 }
