@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { UserGraphqlComponent } from '@app/user-graphql/user-graphql.component'; 
+import { LoginGraphqlComponent } from '@app/auth-graphql/login-graphql.component';
+import { ProjectGraphqlComponent } from '@app/project-graphql/project-graphql.component';
+import { UserGraphqlComponent } from '@app/user-graphql/user-graphql.component';
+import { RelationGraphqlComponent } from '@app/relation-graphql/relation-graphql.component';
 
 const routes: Routes = [
-  { path: 'users',component: UserGraphqlComponent}
+  { path: 'login',component: LoginGraphqlComponent},
+  { path: 'register',component: UserGraphqlComponent},
+  { path: 'projects',component: ProjectGraphqlComponent},
+  { path: 'tracking',component: RelationGraphqlComponent}
 ];
 
 @NgModule({

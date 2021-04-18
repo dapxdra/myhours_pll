@@ -10,11 +10,11 @@ namespace MyHoursApi.GraphQL.Types
         {
             Name = "RelationInput";
             Field<NonNullGraphType<StringGraphType>>("dashboard");
-            Field<NonNullGraphType<StringGraphType>>("date");
-            Field<NonNullGraphType<StringGraphType>>("isActive");
-            Field<NonNullGraphType<StringGraphType>>("time");
-            Field<NonNullGraphType<StringGraphType>>("user");
-            Field<NonNullGraphType<StringGraphType>>("project");
+            Field<DateTimeGraphType>("date");
+            Field<BooleanGraphType>("isActive");
+            Field<NonNullGraphType<FloatGraphType>>("time");
+            Field<NonNullGraphType<ObjectGraphType<User>>>("user");
+            Field<NonNullGraphType<ObjectGraphType<Project>>>("project");
         }
     }
 }
