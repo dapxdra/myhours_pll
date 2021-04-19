@@ -13,7 +13,7 @@ namespace MyHoursApi.GraphQL
     class MyHourQuery : ObjectGraphType
     {
 
-        public MyHourQuery(UserRepository userRepository, ProjectRepository projectRepository)
+        public MyHourQuery(UserRepository userRepository, ProjectRepository projectRepository, RelationRepository relationRepository)
         {
             Field<ListGraphType<UserType>>("users",
              arguments: new QueryArguments(
@@ -27,6 +27,20 @@ namespace MyHoursApi.GraphQL
                 resolve: context => userRepository.Find(context.GetArgument<long>("id"))
             );
             // Field<ListGraphType<UserType>>("users", resolve: context => userRepository.All());
+
+            Field<IntGraphType>("auth",
+             arguments: new QueryArguments(
+                    new QueryArgument<StringGraphType> { Name = "email" },
+                    new QueryArgument<StringGraphType> { Name = "password" }
+                ),
+                resolve: context => userRepository.auth(context.GetArgument<string>("email"),
+                                                        context.GetArgument<string>("password")));
+
+            Field<ListGraphType<ProjectType>>("projects",
+             arguments: new QueryArguments(
+                    new QueryArgument<StringGraphType> { Name = "pname" }
+                ),
+                resolve: context => projectRepository.Filter(context));
             
         }
     }

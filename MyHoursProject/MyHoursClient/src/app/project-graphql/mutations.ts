@@ -4,7 +4,8 @@ export const CREATE_PROJECT = gql`
 mutation($project: ProjectInput!){
   createProject(input: $project){
         id
-        projectname
+        pname
+        description
         isActive
     }
   }

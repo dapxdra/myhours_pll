@@ -1,10 +1,11 @@
 import gql from 'graphql-tag';
 
 export const PROJECT_QUERY = gql`
-query($projectname: String) {
-    users(projectname: $projectname) {
+query($pname: String) {
+    projects(pname: $pname) {
         id
-        projectname
+        pname
+        description
         isActive
     }
 }

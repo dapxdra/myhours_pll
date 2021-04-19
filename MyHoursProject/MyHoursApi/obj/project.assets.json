@@ -6550,11 +6550,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Documents\\UTN\\1C.2021\\WEBll\\Proyecto2\\myhours_pll\\MyHoursProject\\MyHoursApi\\MyHoursApi.csproj",
+      "projectUniqueName": "F:\\Documents\\UTN\\1C.2021\\WEBll\\Proyecto2\\myhours_pll\\myhours_pll\\MyHoursProject\\MyHoursApi\\MyHoursApi.csproj",
       "projectName": "MyHoursApi",
-      "projectPath": "F:\\Documents\\UTN\\1C.2021\\WEBll\\Proyecto2\\myhours_pll\\MyHoursProject\\MyHoursApi\\MyHoursApi.csproj",
+      "projectPath": "F:\\Documents\\UTN\\1C.2021\\WEBll\\Proyecto2\\myhours_pll\\myhours_pll\\MyHoursProject\\MyHoursApi\\MyHoursApi.csproj",
       "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
-      "outputPath": "F:\\Documents\\UTN\\1C.2021\\WEBll\\Proyecto2\\myhours_pll\\MyHoursProject\\MyHoursApi\\obj\\",
+      "outputPath": "F:\\Documents\\UTN\\1C.2021\\WEBll\\Proyecto2\\myhours_pll\\myhours_pll\\MyHoursProject\\MyHoursApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config",

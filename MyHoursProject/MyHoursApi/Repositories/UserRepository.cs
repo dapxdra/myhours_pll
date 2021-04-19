@@ -16,6 +16,12 @@ namespace MyHoursApi.Repositories
         public IEnumerable<User> All(){
             return _context.Users.ToList();
         }
+        public long auth(string email, string password)
+        {
+            var res = _context.Users.Where(c => c.Email == email && c.Password == password).FirstOrDefault();
+            var i = res.Id;
+            return i;
+        }
 
         public IEnumerable<User> Filter(ResolveFieldContext<object> graphqlContext){
             var results = from users in _context.Users select users;

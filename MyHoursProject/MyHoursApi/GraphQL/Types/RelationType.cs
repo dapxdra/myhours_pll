@@ -13,8 +13,8 @@ namespace MyHoursApi.GraphQL.Types
             Field(x => x.Id);
             Field(x => x.Dashboard);
             Field(x => x.Date);
-            Field(x => x.IsActive);
             Field(x => x.Time);
+            Field(x => x.IsActive);
             Field<ProjectType>(
                 "project",
                 resolve: context => {

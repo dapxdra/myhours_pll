@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lQfxaniz+lSE7X1vw8ktBvXInMXFAUY/vhciM8q1xUZLh3K76fWgrmgzQWy+rbM4X9CtcPB+tBAqa2kQTg+2Hg==",
+  "dgSpecHash": "yaueEHCdet2OfnFE1oDTAt3pE9SGJKLT7rKvl9SJ0fayRdi1h9AN3yWLGEtQVJ3/KL3KBOesPKLgsR0/RHh8Qw==",
   "success": true,
-  "projectFilePath": "F:\\Documents\\UTN\\1C.2021\\WEBll\\Proyecto2\\myhours_pll\\MyHoursProject\\MyHoursApi\\MyHoursApi.csproj",
+  "projectFilePath": "F:\\Documents\\UTN\\1C.2021\\WEBll\\Proyecto2\\myhours_pll\\myhours_pll\\MyHoursProject\\MyHoursApi\\MyHoursApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Daniel\\.nuget\\packages\\efcore.namingconventions\\5.0.2\\efcore.namingconventions.5.0.2.nupkg.sha512",
     "C:\\Users\\Daniel\\.nuget\\packages\\graphql\\2.4.0\\graphql.2.4.0.nupkg.sha512",

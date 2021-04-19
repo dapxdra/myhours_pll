@@ -77,6 +77,8 @@ export class UserGraphqlComponent implements OnInit {
         user: user
       }
     }).subscribe(() => {
+      alert("Save succesfully");
+      window.location.href ="http://localhost:4200/login";
       this.filter();
     });
   }

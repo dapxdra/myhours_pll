@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 export const RELATION_QUERY = gql`
 query($dashboard: String) {
-    users(dashboard: $dashboard) {
+    relation(dashboard: $dashboard) {
         id
         dashboard
         isActive

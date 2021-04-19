@@ -5,7 +5,9 @@ namespace MyHoursApi.Models
     public class Project
     {
         public long Id { get; set; }
-        public string ProjectName { get; set; }
+        public string Pname { get; set; }
+
+        public string Description { get; set; }
         public bool IsActive { get; set; }
 
     }

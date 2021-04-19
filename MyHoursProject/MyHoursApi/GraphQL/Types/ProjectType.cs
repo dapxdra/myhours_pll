@@ -11,7 +11,8 @@ namespace MyHoursApi.GraphQL.Types
         {
             Name = "Project";
             Field(x => x.Id);
-            Field(x => x.ProjectName);
+            Field(x => x.Pname);
+            Field(x => x.Description);
             Field(x => x.IsActive);
             
         }

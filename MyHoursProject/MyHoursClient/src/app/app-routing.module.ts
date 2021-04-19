@@ -7,10 +7,11 @@ import { UserGraphqlComponent } from '@app/user-graphql/user-graphql.component';
 import { RelationGraphqlComponent } from '@app/relation-graphql/relation-graphql.component';
 
 const routes: Routes = [
+  { path: '',   redirectTo: 'login', pathMatch: 'full' },
   { path: 'login',component: LoginGraphqlComponent},
   { path: 'register',component: UserGraphqlComponent},
   { path: 'projects',component: ProjectGraphqlComponent},
-  { path: 'tracking',component: RelationGraphqlComponent}
+  { path: 'home/:id',component: RelationGraphqlComponent}
 ];
 
 @NgModule({

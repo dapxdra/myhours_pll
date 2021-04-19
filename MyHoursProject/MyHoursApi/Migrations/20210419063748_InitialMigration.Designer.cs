@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MyHoursApi.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20210412044839_InitialMigration")]
+    [Migration("20210419063748_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,13 +29,17 @@ namespace MyHoursApi.Migrations
                         .HasColumnName("id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
+                    b.Property<string>("Description")
+                        .HasColumnType("text")
+                        .HasColumnName("description");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean")
                         .HasColumnName("is_active");
 
-                    b.Property<string>("ProjectName")
+                    b.Property<string>("Pname")
                         .HasColumnType("text")
-                        .HasColumnName("project_name");
+                        .HasColumnName("pname");
 
                     b.HasKey("Id")
                         .HasName("pk_projects");
@@ -115,33 +119,10 @@ namespace MyHoursApi.Migrations
                         .HasColumnType("text")
                         .HasColumnName("password");
 
-                    b.Property<long>("ProjectId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("project_id");
-
                     b.HasKey("Id")
                         .HasName("pk_users");
 
                     b.ToTable("users");
-                });
-
-            modelBuilder.Entity("ProjectUser", b =>
-                {
-                    b.Property<long>("ProjectsId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("projects_id");
-
-                    b.Property<long>("UsersId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("users_id");
-
-                    b.HasKey("ProjectsId", "UsersId")
-                        .HasName("pk_project_user");
-
-                    b.HasIndex("UsersId")
-                        .HasDatabaseName("ix_project_user_users_id");
-
-                    b.ToTable("project_user");
                 });
 
             modelBuilder.Entity("MyHoursApi.Models.Relation", b =>
@@ -159,23 +140,6 @@ namespace MyHoursApi.Migrations
                     b.Navigation("Project");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("ProjectUser", b =>
-                {
-                    b.HasOne("MyHoursApi.Models.Project", null)
-                        .WithMany()
-                        .HasForeignKey("ProjectsId")
-                        .HasConstraintName("fk_project_user_projects_projects_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MyHoursApi.Models.User", null)
-                        .WithMany()
-                        .HasForeignKey("UsersId")
-                        .HasConstraintName("fk_project_user_users_users_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

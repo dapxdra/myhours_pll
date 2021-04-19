@@ -1,1 +1,65 @@
-<p>project-graphql works!</p>
+<div class="relative bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex justify-between border-b-2 border-gray-300 py-6 md:justify-start md:space-x-10">
+      <nav class="hidden md:flex space-x-10 justify-between items-center bg-gray-50">
+        <a href="#">
+          <span class="sr-only">MyHours</span>
+          <img class="h-8 w-auto sm:h-10" src="https://mcmath.sd38.bc.ca/sites/mcmath.sd38.bc.ca/files/Teacher%20office%20hours.png" alt="MyHours">
+        </a>
+        <a class="text-base font-medium text-gray-500 hover:text-gray-900" routerLink="/home" >Home</a>
+        <a class="text-base font-medium text-gray-500 hover:text-gray-900" routerLink="/projects" >Projects</a>
+      </nav>
+      <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+        <a (click)="logout()" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700" routerLink="/login">LogOut</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+      <div>
+        <img class="mx-auto h-12 w-auto" src="https://mcmath.sd38.bc.ca/sites/mcmath.sd38.bc.ca/files/Teacher%20office%20hours.png">
+        <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+          Create Project
+        </h2>
+      </div>
+      <form class="mt-8 space-y-6" action="#" method="POST">
+        <div class="rounded-md shadow-sm -space-y-px">
+            <div>
+                <label for="pname" class="sr-only">ProjectName</label>
+                <input id="pname" name="pname" type="text"  [(ngModel)]="currentProject.pname" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="ProjectName">
+            </div>
+            <div>
+                <label for="description" class="sr-only">ProjectDescription</label>
+                <input id="description" name="description" type="text"  [(ngModel)]="currentProject.description" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="ProjectDescription">
+            </div>
+        </div>
+  
+        <div>
+          <button (click)="save()" type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            Save
+          </button>
+          
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <!-- <button (click)="isFormVisible = true" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">New User</button> -->
+  
+  
+  <table id="jajas">
+      <tr>
+          <th>Id</th>
+          <th>ProjectName</th>
+          <th>Actions</th>
+      </tr>
+      <tr *ngFor="let project of projects['projects']">
+          <td>{{project.id}}</td>
+          <td>{{project.pname}}</td>
+          <td>
+              <button (click)="delete(project.id)">Delete</button>
+          </td>
+      </tr>
+  </table>

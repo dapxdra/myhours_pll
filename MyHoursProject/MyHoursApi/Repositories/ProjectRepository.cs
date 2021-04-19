@@ -20,14 +20,10 @@ namespace MyHoursApi.Repositories
 
         public IEnumerable<Project> Filter(ResolveFieldContext<object> graphqlContext){
             var results = from projects in _context.Projects select projects;
-            if (graphqlContext.HasArgument("projectName")) {
-                var name = graphqlContext.GetArgument<string>("projectName");
-                results = results.Where(c => c.ProjectName.Equals(name));
+            if (graphqlContext.HasArgument("pname")) {
+                var name = graphqlContext.GetArgument<string>("pname");
+                results = results.Where(c => c.Pname.Equals(name));
             }
-            // if (graphqlContext.HasArgument("name")) {
-            //     var name = graphqlContext.GetArgument<string>("name");
-            //     results = results.Where(c => c.Name.Contains(name));
-            // }
             return results;
         }
 

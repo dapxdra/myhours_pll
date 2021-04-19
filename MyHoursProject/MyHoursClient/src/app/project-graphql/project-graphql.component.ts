@@ -12,8 +12,8 @@ export class ProjectGraphqlComponent implements OnInit {
 
   public projects: any;
   public currentProject: any;
-  public isFormVisible = false;
-  public projectname = null
+  public pname = null;
+  public description = null;
   public isActive = true;
 
   constructor(private apollo: Apollo) { 
@@ -25,9 +25,9 @@ export class ProjectGraphqlComponent implements OnInit {
 
   reset(){
     this.currentProject = {
-      projectname: ''
+      pname: '',
+      description: ''
     };
-    this.isFormVisible = false;
   }
 
   // user(user: any){
@@ -39,7 +39,7 @@ export class ProjectGraphqlComponent implements OnInit {
       query: PROJECT_QUERY,
       fetchPolicy: 'network-only',
       variables: {
-        name: this.projectname === '' ? null : this.projectname
+        pname: this.pname === '' ? null : this.pname
       }
     }).valueChanges.subscribe(result => {
       this.projects = result.data;
@@ -60,7 +60,8 @@ export class ProjectGraphqlComponent implements OnInit {
 
   save() {
     let project = {
-      projectname: this.currentProject.projectname,
+      pname: this.currentProject.pname,
+      description: this.currentProject.description,
       isActive: this.currentProject.isActive
     };
     this.apollo.mutate({
@@ -69,8 +70,14 @@ export class ProjectGraphqlComponent implements OnInit {
         project: project
       }
     }).subscribe(() => {
+      alert("Save succesfully");
+      window.location.href ="http://localhost:4200/projects";
       this.filter();
     });
+  }
+
+  logout(){
+    window.location.href = "http://localhost:4200/login"
   }
 
 }

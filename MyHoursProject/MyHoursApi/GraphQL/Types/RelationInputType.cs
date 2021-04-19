@@ -13,8 +13,8 @@ namespace MyHoursApi.GraphQL.Types
             Field<DateTimeGraphType>("date");
             Field<BooleanGraphType>("isActive");
             Field<NonNullGraphType<FloatGraphType>>("time");
-            Field<NonNullGraphType<ObjectGraphType<User>>>("user");
-            Field<NonNullGraphType<ObjectGraphType<Project>>>("project");
+            Field<NonNullGraphType<UserType>>("user");
+            Field<NonNullGraphType<ProjectType>>("project");
         }
     }
 }

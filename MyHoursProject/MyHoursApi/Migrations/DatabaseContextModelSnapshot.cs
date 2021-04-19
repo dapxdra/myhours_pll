@@ -27,13 +27,17 @@ namespace MyHoursApi.Migrations
                         .HasColumnName("id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
+                    b.Property<string>("Description")
+                        .HasColumnType("text")
+                        .HasColumnName("description");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean")
                         .HasColumnName("is_active");
 
-                    b.Property<string>("ProjectName")
+                    b.Property<string>("Pname")
                         .HasColumnType("text")
-                        .HasColumnName("project_name");
+                        .HasColumnName("pname");
 
                     b.HasKey("Id")
                         .HasName("pk_projects");
