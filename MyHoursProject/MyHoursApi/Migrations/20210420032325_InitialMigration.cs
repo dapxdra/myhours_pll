@@ -50,8 +50,8 @@ namespace MyHoursApi.Migrations
                     is_active = table.Column<bool>(type: "boolean", nullable: false),
                     date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     time = table.Column<double>(type: "double precision", nullable: false),
-                    user_id = table.Column<long>(type: "bigint", nullable: true),
-                    project_id = table.Column<long>(type: "bigint", nullable: true)
+                    user_id = table.Column<long>(type: "bigint", nullable: false),
+                    project_id = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -61,13 +61,13 @@ namespace MyHoursApi.Migrations
                         column: x => x.project_id,
                         principalTable: "projects",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_relations_users_user_id",
                         column: x => x.user_id,
                         principalTable: "users",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

@@ -1,0 +1,164 @@
+<!-- nav -->
+<div class="relative bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex justify-between border-b-2 border-gray-300 py-6 md:justify-start md:space-x-10">
+      <nav class="hidden md:flex space-x-10 justify-between items-center bg-gray-50">
+        <a href="#">
+          <span class="sr-only">MyHours</span>
+          <img class="h-8 w-auto sm:h-10" src="https://mcmath.sd38.bc.ca/sites/mcmath.sd38.bc.ca/files/Teacher%20office%20hours.png" alt="MyHours">
+        </a>
+        <a class="text-base font-medium text-gray-500 hover:text-gray-900" routerLink="/home" >Home</a>
+        <a class="text-base font-medium text-gray-500 hover:text-gray-900" routerLink="/projects" >Projects</a>
+        <a class="text-base font-medium text-gray-500 hover:text-gray-900" routerLink="/users" >Users</a>
+      </nav>
+      <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+        <a (click)="logout()" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700" routerLink="/login">LogOut</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8" *ngIf="isFormVisible">
+  <div class="max-w-md w-full space-y-8">
+    <div>
+      <img class="mx-auto h-12 w-auto" src="https://mcmath.sd38.bc.ca/sites/mcmath.sd38.bc.ca/files/Teacher%20office%20hours.png">
+      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        Create User
+      </h2>
+    </div>
+    <form class="mt-8 space-y-6" action="#" method="POST">
+      <div class="rounded-md shadow-sm -space-y-px">
+        <div>
+          <label for="name" class="sr-only">Name</label>
+          <input id="name" name="name" type="text"  [(ngModel)]="currentUser.name" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Name">
+        </div>
+        <div>
+          <label for="lastname" class="sr-only">Lastname</label>
+          <input id="lastname" name="lastname" type="text"  [(ngModel)]="currentUser.lastname" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Lastname">
+        </div>
+        <div>
+          <label for="email" class="sr-only">Email</label>
+          <input id="email" name="email" type="email"  [(ngModel)]="currentUser.email" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email">
+        </div>
+        <div>
+          <label for="password" class="sr-only">Password</label>
+          <input id="password" name="password" type="password" [(ngModel)]="currentUser.password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password">
+        </div>
+      </div>
+
+      <div>
+        <button (click)="save()" type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Save
+        </button>
+        <button (click)="isFormVisible=false" type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Cancel
+        </button>
+        
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8" *ngIf="isEditVisible">
+  <div class="max-w-md w-full space-y-8">
+    <div>
+      <img class="mx-auto h-12 w-auto" src="https://mcmath.sd38.bc.ca/sites/mcmath.sd38.bc.ca/files/Teacher%20office%20hours.png">
+      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        Edit User
+      </h2>
+    </div>
+    <form class="mt-8 space-y-6" action="#" method="POST">
+      <div class="rounded-md shadow-sm -space-y-px">
+        <div>
+          <label for="editname" class="sr-only">Name</label>
+          <input id="editname" name="editname" type="text"  [(ngModel)]="editname" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Name">
+        </div>
+        <div>
+          <label for="editlastname" class="sr-only">Lastname</label>
+          <input id="editlastname" name="editlastname" type="text"  [(ngModel)]="editlastname" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Lastname">
+        </div>
+        <div>
+          <label for="editemail" class="sr-only">Email</label>
+          <input id="editemail" name="editemail" type="editemail"  [(ngModel)]="editemail" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email">
+        </div>
+        <div>
+          <label for="editpassword" class="sr-only">Password</label>
+          <input id="editpassword" name="editpassword" type="password" [(ngModel)]="editpassword" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password">
+        </div>
+      </div>
+
+      <div>
+        <button (click)="edit()" type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Save
+        </button>
+        <button (click)="isEditVisible=false" type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Cancel
+        </button>
+        
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+<!-- component -->
+<div class="overflow-x-auto">
+  <div class="w-full flex justify-center min-w-screen bg-gray-100 bg-gray-100 font-sans overflow-hidden">
+    <div class="w-full lg:w-5/6">
+      <div class="bg-white shadow-md rounded my-6">
+        <table class="min-w-max w-full table-auto">
+          <thead>
+            <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+              <th class="py-3 px-6 text-left">Name</th>
+              <th class="py-3 px-6 text-center">Lastname</th>
+              <th class="py-3 px-6 text-center">Email</th>
+              <th class="py-3 px-6 text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-600 text-sm font-light">
+            <tr class="border-b border-gray-200 hover:bg-gray-100" *ngFor="let user of users['users']">
+              <td class="py-3 px-6 text-left">
+                <div class="flex items-center">
+                  {{user.name}}
+                </div>
+              </td>
+              <td class="py-3 px-6 text-center">
+                <div class="flex items-center justify-center">
+                  {{user.lastname}}
+                </div>
+              </td>
+              <td class="py-3 px-6 text-center">
+                <div class="flex items-center justify-center">
+                  {{user.email}}
+                </div>
+              </td>
+              <td class="py-3 px-6 text-center">
+                <div class="flex item-center justify-center">
+                  <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                    <svg (click)="cargar(user.id)" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                    </svg>
+                  </div>
+                  <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                    <svg (click)="delete(user.id)" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button (click)="isFormVisible = true" type="submit"
+          class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Add User!
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <button type="button" class="button" (click)="pdf()">Export pdf tabla</button> -->

@@ -10,3 +10,13 @@ query($pname: String) {
     }
 }
 `;
+
+export const GETU_QUERY = gql`
+query{
+    getusers{
+        id
+        name
+        email
+    }
+}
+`;

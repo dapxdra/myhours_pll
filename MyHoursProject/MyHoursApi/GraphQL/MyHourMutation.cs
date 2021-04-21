@@ -15,20 +15,26 @@ namespace MyHoursApi.GraphQL
         public MyHourMutation(UserRepository userRepository, RelationRepository relationRepository, ProjectRepository projectRepository)
         {
             
-            Field<ProjectType>("createRelation",
+            Field<RelationType>("createRelation",
                 arguments: new QueryArguments(new QueryArgument<NonNullGraphType<RelationInputType>> { Name = "input" }),
                 resolve: context => relationRepository.Create(context.GetArgument<Relation>("input"))
             );
             
-            Field<ProjectType>("deleteRelation",
+            Field<RelationType>("deleteRelation",
                 arguments: new QueryArguments(new QueryArgument<IdGraphType> { Name = "id" }),
                 resolve: context => relationRepository.Delete(context.GetArgument<long>("id"))
             );
 
-            Field<ProjectType>("updateRelation",
+            Field<RelationType>("updateRelation",
                 arguments: new QueryArguments(new QueryArgument<IdGraphType> { Name = "id" },
                                               new QueryArgument<NonNullGraphType<RelationInputType>> { Name = "input" }),
                 resolve: context => relationRepository.Update(context.GetArgument<long>("id"), 
+                                                             context.GetArgument<Relation>("input"))
+            );
+            Field<RelationType>("updateRelationTime",
+                arguments: new QueryArguments(new QueryArgument<IdGraphType> { Name = "id" },
+                                              new QueryArgument<NonNullGraphType<RelationInputType>> { Name = "input" }),
+                resolve: context => relationRepository.UpdateTime(context.GetArgument<long>("id"), 
                                                              context.GetArgument<Relation>("input"))
             );
 

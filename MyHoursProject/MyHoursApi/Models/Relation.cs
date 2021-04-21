@@ -8,6 +8,9 @@ namespace MyHoursApi.Models
         public bool IsActive { get; set; }
         public DateTime Date { get; set; }
         public double Time { get; set; }
+
+        public long userId { get; set; }
+        public long projectId { get; set; }
         public User User { get; set; }
         public Project Project { get; set; }
     }

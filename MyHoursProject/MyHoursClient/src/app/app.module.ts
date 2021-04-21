@@ -15,6 +15,7 @@ import {InMemoryCache} from '@apollo/client/core';
 import { ProjectGraphqlComponent } from './project-graphql/project-graphql.component';
 import { RelationGraphqlComponent } from './relation-graphql/relation-graphql.component';
 import { LoginGraphqlComponent } from './auth-graphql/login-graphql.component';
+import { ListUserGraphqlComponent } from './user-graphql/list-user-graphql.component'
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
@@ -24,6 +25,7 @@ import { HomeComponent } from './home/home.component';
     ProjectGraphqlComponent,
     RelationGraphqlComponent,
     LoginGraphqlComponent,
+    ListUserGraphqlComponent,
     HomeComponent,
   ],
   imports: [
@@ -31,6 +33,7 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     FormsModule,
     AppRoutingModule
+
   ],
   providers: [
     HttpClient,

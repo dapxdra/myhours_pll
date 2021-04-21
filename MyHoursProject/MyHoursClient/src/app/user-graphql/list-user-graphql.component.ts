@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import { USER_QUERY } from './queries';
-import { CREATE_USER, DELETE_USER } from './mutations';
+import { USER_QUERY } from '../user-graphql/queries';
+import { CREATE_USER, DELETE_USER, EDIT_USER } from '../user-graphql/mutations';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
-  selector: 'app-user-graphql',
-  templateUrl: './user-graphql.component.html',
+  selector: 'app-list-user-graphql',
+  templateUrl: './list-user-graphql.component.html',
   styleUrls: ['./user-graphql.component.scss']
 })
-export class UserGraphqlComponent implements OnInit {
+export class ListUserGraphqlComponent implements OnInit {
 
   public users: any;
   public currentUser: any;
@@ -18,6 +18,13 @@ export class UserGraphqlComponent implements OnInit {
   public lastname = null;
   public email = null;
   public password = null;
+
+  public editname= null;
+  public editlastname = null;
+  public editemail = null;
+  public editpassword = null;
+  public temp=null;
+  public isEditVisible = false
   constructor(private apollo: Apollo) { 
     this.users = [];
   }
@@ -52,6 +59,35 @@ export class UserGraphqlComponent implements OnInit {
       this.reset();
     });
   }
+  cargar(id: number){
+    this.isEditVisible = true;
+    this.temp = id;
+  }
+  edit(){
+    
+    let user = {
+      name: this.editname,
+      lastname: this.editlastname,
+      email: this.editemail,
+      password: this.editpassword
+
+
+    };
+    this.apollo.mutate({
+      mutation: EDIT_USER,
+      variables: {
+        id: this.temp,
+        user: user
+      }
+    }).subscribe(() => {
+      alert("Edit succesfully");
+      window.location.href ="http://localhost:4200/users";
+      this.filter();
+    });
+  }
+  logout(){
+    window.location.href="http://localhost:4200/login"
+  }
 
   delete(id: number){
     this.apollo.mutate({
@@ -81,10 +117,6 @@ export class UserGraphqlComponent implements OnInit {
       window.location.href ="http://localhost:4200/login";
       this.filter();
     });
-  }
-
-  cancel(){
-    window.location.href="http://localhost:4200/login"
   }
 
   //  pdf(){

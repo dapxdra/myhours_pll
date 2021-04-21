@@ -65,25 +65,25 @@ namespace MyHoursApi.Migrations
                         .HasColumnType("boolean")
                         .HasColumnName("is_active");
 
-                    b.Property<long?>("ProjectId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("project_id");
-
                     b.Property<double>("Time")
                         .HasColumnType("double precision")
                         .HasColumnName("time");
 
-                    b.Property<long?>("UserId")
+                    b.Property<long>("projectId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("project_id");
+
+                    b.Property<long>("userId")
                         .HasColumnType("bigint")
                         .HasColumnName("user_id");
 
                     b.HasKey("Id")
                         .HasName("pk_relations");
 
-                    b.HasIndex("ProjectId")
+                    b.HasIndex("projectId")
                         .HasDatabaseName("ix_relations_project_id");
 
-                    b.HasIndex("UserId")
+                    b.HasIndex("userId")
                         .HasDatabaseName("ix_relations_user_id");
 
                     b.ToTable("relations");
@@ -127,13 +127,17 @@ namespace MyHoursApi.Migrations
                 {
                     b.HasOne("MyHoursApi.Models.Project", "Project")
                         .WithMany()
-                        .HasForeignKey("ProjectId")
-                        .HasConstraintName("fk_relations_projects_project_id");
+                        .HasForeignKey("projectId")
+                        .HasConstraintName("fk_relations_projects_project_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("MyHoursApi.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .HasConstraintName("fk_relations_users_user_id");
+                        .HasForeignKey("userId")
+                        .HasConstraintName("fk_relations_users_user_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Project");
 

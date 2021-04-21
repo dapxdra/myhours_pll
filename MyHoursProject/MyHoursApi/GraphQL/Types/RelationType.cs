@@ -15,18 +15,8 @@ namespace MyHoursApi.GraphQL.Types
             Field(x => x.Date);
             Field(x => x.Time);
             Field(x => x.IsActive);
-            Field<ProjectType>(
-                "project",
-                resolve: context => {
-                    return repository.Projects(context.Source.Project.Id);
-                }
-            );
-            Field<UserType>(
-                "user",
-                resolve: context => {
-                    return repository.Users(context.Source.User.Id);
-                }
-            );
+            Field(x => x.userId);
+            Field(x => x.projectId);
         }
     }
 }

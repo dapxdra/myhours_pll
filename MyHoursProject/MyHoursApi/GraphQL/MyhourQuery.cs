@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using MyHoursApi.Repositories;
+using System;
 
 namespace MyHoursApi.GraphQL
 {
@@ -21,6 +22,50 @@ namespace MyHoursApi.GraphQL
                     new QueryArgument<StringGraphType> { Name = "name" }
                 ),
                 resolve: context => userRepository.Filter(context));
+            Field<ListGraphType<UserType>>("getusers",
+                resolve: context => userRepository.All());
+
+            Field<ListGraphType<ProjectType>>("getprojects",
+                arguments: new QueryArguments(
+                    new QueryArgument<IdGraphType> { Name = "userid" }
+                ),
+                resolve: context => relationRepository.GetProjects(context.GetArgument<long>("userid"))
+                );
+            Field<IntGraphType>("getrelation",
+                arguments: new QueryArguments(
+                    new QueryArgument<IdGraphType> { Name = "userid" },
+                    new QueryArgument<IdGraphType> { Name = "projectid" }
+                ),
+                resolve: context => relationRepository.GetRelation(context.GetArgument<long>("userid"),
+                context.GetArgument<long>("projectid"))
+                );
+            Field<IntGraphType>("gettime",
+                arguments: new QueryArguments(
+                    new QueryArgument<IdGraphType> { Name = "userid" },
+                    new QueryArgument<IdGraphType> { Name = "projectid" }
+                ),
+                resolve: context => relationRepository.GetTime(context.GetArgument<long>("userid"),
+                context.GetArgument<long>("projectid"))
+                );
+
+            Field<FloatGraphType>("sumPro",
+                arguments: new QueryArguments(
+                    new QueryArgument<IdGraphType> { Name = "projectid" }
+                ),
+                resolve: context => relationRepository.TotalProject(context.GetArgument<long>("projectid"))
+                );
+            Field<FloatGraphType>("sumUser",
+                arguments: new QueryArguments(
+                    new QueryArgument<IdGraphType> { Name = "userid" }
+                ),
+                resolve: context => relationRepository.TotalUser(context.GetArgument<long>("userid"))
+                );
+
+            Field<ListGraphType<RelationType>>("relation",
+                arguments: new QueryArguments(
+                    new QueryArgument<IdGraphType> { Name = "userid" }
+                ),
+                resolve: context => relationRepository.Filter(context));
 
             Field<UserType>("user",
              arguments: new QueryArguments(new QueryArgument<IdGraphType> { Name = "id" }),

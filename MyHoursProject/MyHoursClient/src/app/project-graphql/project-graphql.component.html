@@ -1,65 +1,217 @@
+<!-- nav -->
 <div class="relative bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
     <div class="flex justify-between border-b-2 border-gray-300 py-6 md:justify-start md:space-x-10">
       <nav class="hidden md:flex space-x-10 justify-between items-center bg-gray-50">
         <a href="#">
           <span class="sr-only">MyHours</span>
-          <img class="h-8 w-auto sm:h-10" src="https://mcmath.sd38.bc.ca/sites/mcmath.sd38.bc.ca/files/Teacher%20office%20hours.png" alt="MyHours">
+          <img class="h-8 w-auto sm:h-10"
+            src="https://mcmath.sd38.bc.ca/sites/mcmath.sd38.bc.ca/files/Teacher%20office%20hours.png" alt="MyHours">
         </a>
-        <a class="text-base font-medium text-gray-500 hover:text-gray-900" routerLink="/home" >Home</a>
-        <a class="text-base font-medium text-gray-500 hover:text-gray-900" routerLink="/projects" >Projects</a>
+        <a class="text-base font-medium text-gray-500 hover:text-gray-900" routerLink="/home">Home</a>
+        <a class="text-base font-medium text-gray-500 hover:text-gray-900" routerLink="/projects">Projects</a>
+        <a class="text-base font-medium text-gray-500 hover:text-gray-900" routerLink="/users">Users</a>
       </nav>
       <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-        <a (click)="logout()" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700" routerLink="/login">LogOut</a>
+        <a (click)="logout()"
+          class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+          routerLink="/login">LogOut</a>
       </div>
     </div>
   </div>
 </div>
 
-<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-md w-full space-y-8">
-      <div>
-        <img class="mx-auto h-12 w-auto" src="https://mcmath.sd38.bc.ca/sites/mcmath.sd38.bc.ca/files/Teacher%20office%20hours.png">
-        <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          Create Project
-        </h2>
-      </div>
-      <form class="mt-8 space-y-6" action="#" method="POST">
-        <div class="rounded-md shadow-sm -space-y-px">
-            <div>
-                <label for="pname" class="sr-only">ProjectName</label>
-                <input id="pname" name="pname" type="text"  [(ngModel)]="currentProject.pname" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="ProjectName">
-            </div>
-            <div>
-                <label for="description" class="sr-only">ProjectDescription</label>
-                <input id="description" name="description" type="text"  [(ngModel)]="currentProject.description" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="ProjectDescription">
-            </div>
-        </div>
-  
+<div class="flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8" *ngIf="isEditVisible">
+  <div class="max-w-md w-full space-y-8">
+    <div>
+      <img class="mx-auto h-12 w-auto"
+        src="https://mcmath.sd38.bc.ca/sites/mcmath.sd38.bc.ca/files/Teacher%20office%20hours.png">
+      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        Edit Project!
+      </h2>
+    </div>
+    <form class="mt-8 space-y-6" action="#" method="POST">
+      <div class="rounded-md shadow-sm -space-y-px">
         <div>
-          <button (click)="save()" type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            Save
-          </button>
-          
+          <label for="editname" class="sr-only">ProjectName</label>
+          <input value="" id="editname" name="editname" type="text" [(ngModel)]="editname" required
+            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+            placeholder="ProjectName">
         </div>
-      </form>
+        <div>
+          <label for="editdesc" class="sr-only">ProjectDescription</label>
+          <input id="editdesc" name="editdesc" type="text" [(ngModel)]="editdesc" required
+            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+            placeholder="ProjectDescription">
+        </div>
+      </div>
+
+      <div>
+        <button (click)="edit()" type="submit"
+          class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Save
+        </button>
+        <button (click)="isEditVisible=false" type="submit"
+          class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8" *ngIf="isFormVisible">
+  <div class="max-w-md w-full space-y-8">
+    <div>
+      <img class="mx-auto h-12 w-auto"
+        src="https://mcmath.sd38.bc.ca/sites/mcmath.sd38.bc.ca/files/Teacher%20office%20hours.png">
+      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        Create Project
+      </h2>
+    </div>
+    <form class="mt-8 space-y-6" action="#" method="POST">
+      <div class="rounded-md shadow-sm -space-y-px">
+        <div>
+          <label for="pname" class="sr-only">ProjectName</label>
+          <input id="pname" name="pname" type="text" [(ngModel)]="currentProject.pname" required
+            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+            placeholder="ProjectName">
+        </div>
+        <div>
+          <label for="description" class="sr-only">ProjectDescription</label>
+          <input id="description" name="description" type="text" [(ngModel)]="currentProject.description" required
+            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+            placeholder="ProjectDescription">
+        </div>
+      </div>
+
+      <div>
+        <button (click)="save()" type="submit"
+          class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Save
+        </button>
+        <button (click)="isFormVisible = false" type="submit"
+          class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Cancel
+        </button>
+
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!-- <div
+  class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-black">
+  <label for="pname">Project Name:</label>
+  <input type="pname" name="pname" [(ngModel)]="pname" class="relative block  px-6 py--2 border border-gray-300">
+  <label for="description">Description:</label>
+  <input type="description" name="description" [(ngModel)]="description"
+    class="relative block px-6 py--2 border border-gray-300">
+  <button (click)="filter()" class="text-white bg-indigo-600">Filter</button>
+</div> -->
+
+<!-- component -->
+<div class="overflow-x-auto">
+  <div class="w-full flex justify-center min-w-screen bg-gray-100 bg-gray-100 font-sans overflow-hidden">
+    <div class="w-full lg:w-5/6">
+      <div class="bg-white shadow-md rounded my-6">
+        <table class="min-w-max w-full table-auto">
+          <thead>
+            <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+              <th class="py-3 px-6 text-left">ProjectName</th>
+              <th class="py-3 px-6 text-center">Description</th>
+              <th class="py-3 px-6 text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-600 text-sm font-light">
+            <tr class="border-b border-gray-200 hover:bg-gray-100" *ngFor="let project of projects['projects']">
+              <td class="py-3 px-6 text-left">
+                <div class="flex items-center">
+                  {{project.pname}}
+                </div>
+              </td>
+              <td class="py-3 px-6 text-center">
+                <div class="flex items-center justify-center">
+                  {{project.description}}
+                </div>
+              </td>
+              <td class="py-3 px-6 text-center">
+                <div class="flex item-center justify-center">
+                  <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                    <svg (click)="cargar(project.id)" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                    </svg>
+                  </div>
+                  <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                    <svg (click)="delete(project.id)" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                  </div>
+                  <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                    <svg (click)="getUsers(project.id)" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                    </svg>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button (click)="isFormVisible = true" type="submit"
+          class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Create a project!
+        </button>
+      </div>
     </div>
   </div>
-  
-  <!-- <button (click)="isFormVisible = true" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">New User</button> -->
-  
-  
-  <table id="jajas">
-      <tr>
-          <th>Id</th>
-          <th>ProjectName</th>
-          <th>Actions</th>
-      </tr>
-      <tr *ngFor="let project of projects['projects']">
-          <td>{{project.id}}</td>
-          <td>{{project.pname}}</td>
-          <td>
-              <button (click)="delete(project.id)">Delete</button>
-          </td>
-      </tr>
-  </table>
+</div>
+
+<div class="overflow-x-auto">
+  <div class="w-full flex justify-center min-w-screen bg-gray-100 bg-gray-100 font-sans overflow-hidden" *ngIf="isTableUser">
+    <div class="w-full lg:w-5/6">
+      <div class="bg-white shadow-md rounded my-6">
+        <table class="min-w-max w-full table-auto">
+          <thead>
+            <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+              <th class="py-3 px-6 text-left">Name</th>
+              <th class="py-3 px-6 text-center">Email</th>
+              <th class="py-3 px-6 text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-600 text-sm font-light">
+            <tr *ngFor="let user of users" class="border-b border-gray-200 hover:bg-gray-100">
+              <td class="py-3 px-6 text-left">
+                <div class="flex items-center">
+                  {{user.name}}
+                </div>
+              </td>
+              <td class="py-3 px-6 text-center">
+                <div class="flex items-center justify-center">
+                  {{user.email}}
+                </div>
+              </td>
+              <td class="py-3 px-6 text-center">
+                <div class="flex item-center justify-center">
+                  <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                    <svg (click)="sumUser(user.id)" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+                    </svg>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button (click)="isTableUser = false" type="submit"
+          class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
